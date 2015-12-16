@@ -41,7 +41,7 @@ function loadBackend(config, name) {
 
   var ret = backendmod.init(startup_time, config, backendEvents, l);
   if (!ret) {
-    l.log("Failed to load backend: " + name);
+    l.log("Failed to load backend: " + name, "ERROR");
     process.exit(1);
   }
 }
@@ -60,7 +60,7 @@ function startServer(config, name, callback) {
 
   var ret = servermod.start(config, callback);
   if (!ret) {
-    l.log("Failed to load server: " + name);
+    l.log("Failed to load server: " + name, "ERROR");
     process.exit(1);
   }
 }
@@ -395,12 +395,12 @@ config.configFile(process.argv[2], function (config) {
         }
       },
       function(err, stream) {
-        l.log('Caught ' + err +', Moving on');
+        l.log('MGMT: Caught ' + err +', Moving on', 'WARNING');
       }
     );
 
     serversLoaded = true;
-    util.log("server is up");
+    l.log("server is up", "INFO");
 
     pctThreshold = config.percentThreshold || 90;
     if (!Array.isArray(pctThreshold)) {
