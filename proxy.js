@@ -124,10 +124,7 @@ configlib.configFile(process.argv[2], function (conf, oldConfig) {
 
     mgmt_server.start(
       config,
-      function(data, stream) {
-        var cmdline = data.trim().split(" ");
-        var cmd = cmdline.shift();
-
+      function(cmd, parameters, stream) {
         switch(cmd) {
           case "help":
             stream.write("Commands: config, health, status, quit\n\n");
@@ -138,8 +135,8 @@ configlib.configFile(process.argv[2], function (conf, oldConfig) {
             break;
 
           case "health":
-            if (cmdline.length > 0) {
-              var cmdaction = cmdline[0].toLowerCase();
+            if (parameters.length > 0) {
+              var cmdaction = parameters[0].toLowerCase();
               if (cmdaction === 'up') {
                 healthStatus = 'up';
               } else if (cmdaction === 'down') {

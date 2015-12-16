@@ -291,10 +291,7 @@ config.configFile(process.argv[2], function (config) {
 
     mgmt_server.start(
       config,
-      function(data, stream) {
-        var cmdline = data.trim().split(" ");
-        var cmd = cmdline.shift();
-
+      function(cmd, parameters, stream) {
         switch(cmd) {
           case "help":
             stream.write("Commands: stats, counters, timers, gauges, delcounters, deltimers, delgauges, health, config, quit\n\n");
@@ -305,8 +302,8 @@ config.configFile(process.argv[2], function (config) {
             break;
 
           case "health":
-            if (cmdline.length > 0) {
-              var cmdaction = cmdline[0].toLowerCase();
+            if (parameters.length > 0) {
+              var cmdaction = parameters[0].toLowerCase();
               if (cmdaction === 'up') {
                 healthStatus = 'up';
               } else if (cmdaction === 'down') {
@@ -374,15 +371,15 @@ config.configFile(process.argv[2], function (config) {
             break;
 
           case "delcounters":
-            mgmt.delete_stats(counters, cmdline, stream);
+            mgmt.delete_stats(counters, parameters, stream);
             break;
 
           case "deltimers":
-            mgmt.delete_stats(timers, cmdline, stream);
+            mgmt.delete_stats(timers, parameters, stream);
             break;
 
           case "delgauges":
-            mgmt.delete_stats(gauges, cmdline, stream);
+            mgmt.delete_stats(gauges, parameters, stream);
             break;
 
           case "quit":
