@@ -7,5 +7,7 @@ Wants=network.target
 Type=simple
 User=_statsd
 ExecStart=/usr/bin/nodejs /usr/share/statsd/proxy.js /etc/statsd/proxyConfig.js
+Restart=on-failure
+RestartSec=10
 
 [Install]
