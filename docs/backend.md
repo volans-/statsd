@@ -33,6 +33,7 @@ queues and third-party services.
 ## Available Third-party backends
 - [amqp-backend](https://github.com/mrtazz/statsd-amqp-backend)
 - [atsd-backend](https://github.com/axibase/atsd-statsd-backend)
+- [aws-cloudwatch-backend](https://github.com/camitz/aws-cloudwatch-statsd-backend)
 - [node-bell](https://github.com/eleme/node-bell)
 - [couchdb-backend](https://github.com/sysadminmike/couch-statsd-backend)
 - [datadog-backend](https://github.com/DataDog/statsd-datadog-backend)
@@ -53,6 +54,7 @@ queues and third-party services.
 - [statsd-backend](https://github.com/dynmeth/statsd-backend)
 - [statsd http backend](https://github.com/bmhatfield/statsd-http-backend)
 - [statsd aggregation backend](https://github.com/wanelo/gossip_girl)
+- [warp10-backend](https://github.com/cityzendata/statsd-warp10-backend)
 - [zabbix-backend](https://github.com/parkerd/statsd-zabbix-backend)
 
-[graphite]: http://graphite.wikidot.com
+[graphite]: https://graphite.readthedocs.io/en/latest/

@@ -1,15 +1,17 @@
 /*
-Graphite Required Variables:
+Graphite Required Variable:
 
-(Leave these unset to avoid sending stats to Graphite.
- Set debug flag and leave these unset to run in 'dry' debug mode -
+(Leave this unset to avoid sending stats to Graphite.
+ Set debug flag and leave this unset to run in 'dry' debug mode -
  useful for testing statsd clients without a Graphite server.)
 
   graphiteHost:     hostname or IP of Graphite server
-  graphitePort:     port of Graphite server
 
 Optional Variables:
 
+  graphitePort:     port for the graphite text collector [default: 2003]
+  graphitePicklePort: port for the graphite pickle collector [default: 2004]
+  graphiteProtocol: either 'text' or 'pickle' [default: 'text']
   backends:         an array of backends to load. Each backend must exist
                     by name in the directory backends/. If not specified,
                     the default graphite backend will be loaded. 
@@ -29,6 +31,10 @@ Optional Variables:
     address:        address to listen on [default: 0.0.0.0]
     address_ipv6:   defines if the address is an IPv4 or IPv6 address [true or false, default: false]
     port:           port to listen for messages on [default: 8125]
+    socket:         (only for tcp servers) path to unix domain socket which will be used to receive
+                    metrics [default: undefinded]
+    socket_mod:     (only for tcp servers) file mode which should be applied to unix domain socket, relevant
+                    only if socket option is used [default: undefined]
 
   debug:            debug flag [default: false]
   mgmt_address:     address to run the management TCP interface on
